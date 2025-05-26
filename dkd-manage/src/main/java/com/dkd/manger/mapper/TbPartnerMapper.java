@@ -2,6 +2,7 @@ package com.dkd.manger.mapper;
 
 import java.util.List;
 import com.dkd.manger.domain.TbPartner;
+import com.dkd.manger.domain.vo.PartnerVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -60,4 +61,6 @@ public interface TbPartnerMapper
      * @return 结果
      */
     public int deleteTbPartnerByIds(Long[] ids);
+
+    List<PartnerVo> selectPartnerVoList(TbPartner partner);
 }

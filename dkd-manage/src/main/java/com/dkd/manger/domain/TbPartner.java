@@ -46,61 +46,61 @@ public class TbPartner extends BaseEntity
         this.id = id;
     }
 
-    public Long getId() 
+    public Long getId()
     {
         return id;
     }
-    public void setPartnerName(String partnerName) 
+    public void setPartnerName(String partnerName)
     {
         this.partnerName = partnerName;
     }
 
-    public String getPartnerName() 
+    public String getPartnerName()
     {
         return partnerName;
     }
-    public void setContactPerson(String contactPerson) 
+    public void setContactPerson(String contactPerson)
     {
         this.contactPerson = contactPerson;
     }
 
-    public String getContactPerson() 
+    public String getContactPerson()
     {
         return contactPerson;
     }
-    public void setContactPhone(String contactPhone) 
+    public void setContactPhone(String contactPhone)
     {
         this.contactPhone = contactPhone;
     }
 
-    public String getContactPhone() 
+    public String getContactPhone()
     {
         return contactPhone;
     }
-    public void setProfitRatio(Long profitRatio) 
+    public void setProfitRatio(Long profitRatio)
     {
         this.profitRatio = profitRatio;
     }
 
-    public Long getProfitRatio() 
+    public Long getProfitRatio()
     {
         return profitRatio;
     }
-    public void setAccount(String account) 
+    public void setAccount(String account)
     {
         this.account = account;
     }
 
-    public String getAccount() 
+    public String getAccount()
     {
         return account;
     }
-    public void setPassword(String password) 
+    public void setPassword(String password)
     {
         this.password = password;
     }
 
-    public String getPassword() 
+    public String getPassword()
     {
         return password;
     }

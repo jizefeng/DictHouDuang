@@ -2,6 +2,8 @@ package com.dkd.manger.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dkd.manger.domain.vo.PartnerVo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +44,7 @@ public class TbPartnerController extends BaseController
     public TableDataInfo list(TbPartner tbPartner)
     {
         startPage();
-        List<TbPartner> list = tbPartnerService.selectTbPartnerList(tbPartner);
+        List<PartnerVo> list = tbPartnerService.selectPartnerVoList(tbPartner);
         return getDataTable(list);
     }
 

@@ -3,6 +3,7 @@ package com.dkd.manger.service.impl;
 import java.util.List;
 import com.dkd.common.utils.DateUtils;
 import com.dkd.common.utils.SecurityUtils;
+import com.dkd.manger.domain.vo.PartnerVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dkd.manger.mapper.TbPartnerMapper;
@@ -94,5 +95,15 @@ public class TbPartnerServiceImpl implements ITbPartnerService
     public int deleteTbPartnerById(Long id)
     {
         return tbPartnerMapper.deleteTbPartnerById(id);
+    }
+
+    /**
+     * 查询合作商管理列表
+     * @param partner
+     * @return partnerVo集合
+     */
+    @Override
+    public List<PartnerVo> selectPartnerVoList(TbPartner partner) {
+        return tbPartnerMapper.selectPartnerVoList(partner);
     }
 }
