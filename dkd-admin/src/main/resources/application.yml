@@ -7,9 +7,9 @@ ruoyi:
   # 版权年份
   copyrightYear: 2024
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:/ruoyi/uploadPath
+  profile: C:/项目/若依框架/asst
   # 获取ip地址开关
-  addressEnabled: false
+  addressEnabled: true
   # 验证码类型 math 数字计算 char 字符验证
   captchaType: math
 
@@ -64,7 +64,7 @@ spring:
   devtools:
     restart:
       # 热部署开关
-      enabled: true
+      enabled: false
   # redis 配置
   redis:
     # 地址
@@ -74,7 +74,7 @@ spring:
     # 数据库索引
     database: 0
     # 密码
-    password: root
+    password: jzf
     # 连接超时时间
     timeout: 10s
     lettuce:
@@ -95,7 +95,7 @@ token:
   # 令牌密钥
   secret: abcdefghijklmnopqrstuvwxyz
   # 令牌有效期（默认30分钟）
-  expireTime: 30
+  expireTime: 3000
 
 # MyBatis配置
 mybatis:
