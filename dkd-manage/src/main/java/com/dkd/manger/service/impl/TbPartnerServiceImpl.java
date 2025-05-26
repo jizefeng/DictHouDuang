@@ -2,6 +2,7 @@ package com.dkd.manger.service.impl;
 
 import java.util.List;
 import com.dkd.common.utils.DateUtils;
+import com.dkd.common.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dkd.manger.mapper.TbPartnerMapper;
@@ -53,6 +54,7 @@ public class TbPartnerServiceImpl implements ITbPartnerService
     @Override
     public int insertTbPartner(TbPartner tbPartner)
     {
+        tbPartner.setPassword(SecurityUtils.encryptPassword(tbPartner.getPassword()));
         tbPartner.setCreateTime(DateUtils.getNowDate());
         return tbPartnerMapper.insertTbPartner(tbPartner);
     }
