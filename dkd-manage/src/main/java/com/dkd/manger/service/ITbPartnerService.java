@@ -65,4 +65,5 @@ public interface ITbPartnerService
      * @return partnerVo集合
      */
     List<PartnerVo> selectPartnerVoList(TbPartner partner);
+
 }

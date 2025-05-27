@@ -106,4 +106,5 @@ public class TbPartnerServiceImpl implements ITbPartnerService
     public List<PartnerVo> selectPartnerVoList(TbPartner partner) {
         return tbPartnerMapper.selectPartnerVoList(partner);
     }
+
 }
