@@ -11,19 +11,19 @@ import com.dkd.manger.service.INodeService;
 
 /**
  * 点位管理Service业务层处理
- * 
+ *
  * @author jzf
  * @date 2025-05-24
  */
 @Service
-public class NodeServiceImpl implements INodeService 
+public class NodeServiceImpl implements INodeService
 {
     @Autowired
     private NodeMapper nodeMapper;
 
     /**
      * 查询点位管理
-     * 
+     *
      * @param id 点位管理主键
      * @return 点位管理
      */
@@ -35,7 +35,7 @@ public class NodeServiceImpl implements INodeService
 
     /**
      * 查询点位管理列表
-     * 
+     *
      * @param node 点位管理
      * @return 点位管理
      */
@@ -47,7 +47,7 @@ public class NodeServiceImpl implements INodeService
 
     /**
      * 新增点位管理
-     * 
+     *
      * @param node 点位管理
      * @return 结果
      */
@@ -60,7 +60,7 @@ public class NodeServiceImpl implements INodeService
 
     /**
      * 修改点位管理
-     * 
+     *
      * @param node 点位管理
      * @return 结果
      */
@@ -73,7 +73,7 @@ public class NodeServiceImpl implements INodeService
 
     /**
      * 批量删除点位管理
-     * 
+     *
      * @param ids 需要删除的点位管理主键
      * @return 结果
      */
@@ -85,7 +85,7 @@ public class NodeServiceImpl implements INodeService
 
     /**
      * 删除点位管理信息
-     * 
+     *
      * @param id 点位管理主键
      * @return 结果
      */
