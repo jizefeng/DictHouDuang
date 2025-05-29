@@ -2,6 +2,7 @@ package com.dkd.manger.mapper;
 
 import java.util.List;
 import com.dkd.manger.domain.Role;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 角色管理Mapper接口
@@ -9,6 +10,7 @@ import com.dkd.manger.domain.Role;
  * @author jzf
  * @date 2025-05-28
  */
+@Mapper
 public interface RoleMapper 
 {
     /**

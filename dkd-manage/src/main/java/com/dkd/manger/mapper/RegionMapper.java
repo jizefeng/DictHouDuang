@@ -4,6 +4,7 @@ import java.util.List;
 import com.dkd.manger.domain.Region;
 import com.dkd.manger.domain.vo.RegionVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * 区域管理Mapper接口
@@ -68,4 +69,5 @@ public interface RegionMapper
      * @return 区域管理集合
      */
     List<RegionVo> selectRegionListVo(Region region);
+
 }
