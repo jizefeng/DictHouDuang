@@ -15,7 +15,8 @@ import com.dkd.manger.service.IChannelService;
  * @date 2025-05-29
  */
 @Service
-public class ChannelServiceImpl implements IChannelService 
+public
+class ChannelServiceImpl implements IChannelService
 {
     @Autowired
     private ChannelMapper channelMapper;
@@ -102,5 +103,16 @@ public class ChannelServiceImpl implements IChannelService
     @Override
     public int batchInsertChannel(List<Channel> channelList) {
         return channelMapper.batchInsertChannel(channelList);
+    }
+
+    /**
+     * 根据商品id集合统计货道数量
+     *
+     * @param skuIds
+     * @return 统计结果
+     */
+    @Override
+    public int countChannelBySkuIds(Long[] skuIds) {
+        return channelMapper.countChannelBySkuIds(skuIds);
     }
 }

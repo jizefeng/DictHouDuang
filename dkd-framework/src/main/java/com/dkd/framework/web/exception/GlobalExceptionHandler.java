@@ -3,6 +3,7 @@ package com.dkd.framework.web.exception;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -134,5 +135,21 @@ public class GlobalExceptionHandler
     public AjaxResult handleDemoModeException(DemoModeException e)
     {
         return AjaxResult.error("演示模式，不允许操作");
+    }
+
+    /**
+     * 数据完整性异常
+     */
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public AjaxResult handelDataIntegrityViolationException(DataIntegrityViolationException e) {
+
+        if (e.getMessage().contains("foreign")) {
+
+            return AjaxResult.error("无法删除，有其他数据引用");
+        }
+        if(e.getMessage().contains("Duplicate")){
+            return AjaxResult.error("无法保存，名称已存在");
+        }
+        return AjaxResult.error("数据完整性异常，请联系管理员");
     }
 }
