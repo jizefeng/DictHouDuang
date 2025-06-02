@@ -3,6 +3,7 @@ package com.dkd.manger.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dkd.manger.domain.dto.ChannelConfigDto;
 import com.dkd.manger.domain.vo.ChannelVo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,10 +108,19 @@ public class ChannelController extends BaseController
     /**
      * 根据售货机编号查询货道列表
      */
-    @PreAuthorize("@ss.hasPermi('manage:channel:list')")
+    @PreAuthorize("@ss.hasPermi('mange:channel:list')")
     @GetMapping("/list/{innerCode}")
     public AjaxResult listByInnerCode(@PathVariable("innerCode") String innerCode) {
         List<ChannelVo> voList = channelService.selectChannelVoListByInnerCode(innerCode);
         return success(voList);
+    }
+    /**
+     * 货道关联商品
+     */
+    @PreAuthorize("@ss.hasPermi('manage:channel:edit')")
+    @Log(title = "售货机货道", businessType = BusinessType.UPDATE)
+    @PutMapping("/config")
+    public AjaxResult setChannel(@RequestBody ChannelConfigDto channelConfigDto) {
+        return toAjax(channelService.setChannel(channelConfigDto));
     }
 }
