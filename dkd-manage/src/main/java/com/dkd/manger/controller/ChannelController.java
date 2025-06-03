@@ -117,7 +117,7 @@ public class ChannelController extends BaseController
     /**
      * 货道关联商品
      */
-    @PreAuthorize("@ss.hasPermi('manage:channel:edit')")
+    @PreAuthorize("@ss.hasPermi('mange:channel:edit')")
     @Log(title = "售货机货道", businessType = BusinessType.UPDATE)
     @PutMapping("/config")
     public AjaxResult setChannel(@RequestBody ChannelConfigDto channelConfigDto) {

@@ -138,18 +138,18 @@ class ChannelServiceImpl implements IChannelService
     @Override
     public int setChannel(ChannelConfigDto channelConfigDto) {
         //1. dto转po
-        List<Channel> channelList = channelConfigDto.getChannelList().stream().map(channel -> {
+        List<Channel> list = channelConfigDto.getChannelList().stream().map(c -> {
             // 根据售货机编号和货道编号查询货道
-            Channel channelInfo = channelMapper.getChannelInfo(channel.getInnerCode(), channel.getChannelCode());
-            if (channelInfo != null) {
+            Channel channel = channelMapper.getChannelInfo(c.getInnerCode(), c.getChannelCode());
+            if (channel != null) {
                 // 货道更新skuId
-                channel.setSkuId(channel.getSkuId());
+                channel.setSkuId(c.getSkuId());
                 // 货道更新时间
-                channelInfo.setUpdateTime(DateUtils.getNowDate());
+                channel.setUpdateTime(DateUtils.getNowDate());
             }
-            return channelInfo;
+            return channel;
         }).collect(Collectors.toList());
         //2. 批量修改货道
-        return channelMapper.batchUpdateChannel(channelList);
+        return channelMapper.batchUpdateChannel(list);
     }
 }
