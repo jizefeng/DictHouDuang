@@ -3,8 +3,10 @@ package com.dkd.manger.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dkd.manger.domain.TaskDetails;
 import com.dkd.manger.domain.dto.TaskDto;
 import com.dkd.manger.domain.vo.TaskVo;
+import com.dkd.manger.service.ITaskDetailsService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +39,8 @@ public class TaskController extends BaseController
     @Autowired
     private ITaskService taskService;
 
+    @Autowired
+    private ITaskDetailsService taskDetailsService;
     /**
      * 查询工单列表
      */
@@ -125,5 +129,14 @@ public class TaskController extends BaseController
     @PutMapping("/cancel")
     public AjaxResult cancelTask(@RequestBody Task task){
         return toAjax(taskService.cancelTask(task));
+    }
+    /**
+     * 查看工单补货详情
+     */
+    @GetMapping("/byTaskId/{taskId}")
+    public AjaxResult getTaskById(@PathVariable("taskId") Long taskId){
+        TaskDetails taskDetailsParam = new TaskDetails();
+        taskDetailsParam.setTaskId(taskId);
+        return success(taskDetailsService.selectTaskDetailsList(taskDetailsParam));
     }
 }
