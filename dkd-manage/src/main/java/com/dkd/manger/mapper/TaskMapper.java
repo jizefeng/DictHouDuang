@@ -3,6 +3,7 @@ package com.dkd.manger.mapper;
 import java.util.List;
 import com.dkd.manger.domain.Task;
 import com.dkd.manger.domain.vo.TaskVo;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 工单Mapper接口
@@ -10,6 +11,7 @@ import com.dkd.manger.domain.vo.TaskVo;
  * @author jzf
  * @date 2025-06-03
  */
+@Mapper
 public interface TaskMapper 
 {
     /**

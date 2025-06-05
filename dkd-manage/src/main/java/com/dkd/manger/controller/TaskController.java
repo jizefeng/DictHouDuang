@@ -3,6 +3,7 @@ package com.dkd.manger.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dkd.manger.domain.dto.TaskDto;
 import com.dkd.manger.domain.vo.TaskVo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,4 +105,16 @@ public class TaskController extends BaseController
         return toAjax(taskService.deleteTaskByTaskIds(taskIds));
     }
 
+    /**
+     * 新增工单
+     */
+    @PreAuthorize("@ss.hasPermi('manage:task:add')")
+    @Log(title = "工单", businessType = BusinessType.INSERT)
+    @PostMapping
+    public AjaxResult add(@RequestBody TaskDto taskDto)
+    {
+        // 设置指派人（登录用户）id
+        taskDto.setAssignorId(getUserId());
+        return toAjax(taskService.insertTaskDto(taskDto));
+    }
 }
