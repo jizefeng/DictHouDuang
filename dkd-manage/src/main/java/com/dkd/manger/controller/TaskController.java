@@ -117,4 +117,13 @@ public class TaskController extends BaseController
         taskDto.setAssignorId(getUserId());
         return toAjax(taskService.insertTaskDto(taskDto));
     }
+    /**
+     * 取消工单
+     */
+    @PreAuthorize("@ss.hasPermi('manger:task:edit')")
+    @Log(title = "工单", businessType = BusinessType.UPDATE)
+    @PutMapping("/cancel")
+    public AjaxResult cancelTask(@RequestBody Task task){
+        return toAjax(taskService.cancelTask(task));
+    }
 }
