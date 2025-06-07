@@ -38,9 +38,6 @@ public class TaskController extends BaseController
 {
     @Autowired
     private ITaskService taskService;
-
-    @Autowired
-    private ITaskDetailsService taskDetailsService;
     /**
      * 查询工单列表
      */
@@ -82,9 +79,11 @@ public class TaskController extends BaseController
     @PreAuthorize("@ss.hasPermi('manger:task:add')")
     @Log(title = "工单", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody Task task)
+    public AjaxResult add(@RequestBody TaskDto taskDto)
     {
-        return toAjax(taskService.insertTask(task));
+        // 设置指派人（登录用户）id
+        taskDto.setAssignorId(getUserId());
+        return toAjax(taskService.insertTaskDto(taskDto));
     }
 
     /**
@@ -110,18 +109,6 @@ public class TaskController extends BaseController
     }
 
     /**
-     * 新增工单
-     */
-    @PreAuthorize("@ss.hasPermi('manage:task:add')")
-    @Log(title = "工单", businessType = BusinessType.INSERT)
-    @PostMapping
-    public AjaxResult add(@RequestBody TaskDto taskDto)
-    {
-        // 设置指派人（登录用户）id
-        taskDto.setAssignorId(getUserId());
-        return toAjax(taskService.insertTaskDto(taskDto));
-    }
-    /**
      * 取消工单
      */
     @PreAuthorize("@ss.hasPermi('manger:task:edit')")
@@ -130,13 +117,6 @@ public class TaskController extends BaseController
     public AjaxResult cancelTask(@RequestBody Task task){
         return toAjax(taskService.cancelTask(task));
     }
-    /**
-     * 查看工单补货详情
-     */
-    @GetMapping("/byTaskId/{taskId}")
-    public AjaxResult getTaskById(@PathVariable("taskId") Long taskId){
-        TaskDetails taskDetailsParam = new TaskDetails();
-        taskDetailsParam.setTaskId(taskId);
-        return success(taskDetailsService.selectTaskDetailsList(taskDetailsParam));
-    }
+
+
 }
